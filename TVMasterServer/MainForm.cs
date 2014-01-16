@@ -65,7 +65,7 @@ namespace TVMasterServer
                     {
                         String timeStamp = DateTime.Now.ToShortDateString().ToString() + " " + DateTime.Now.ToLongTimeString().ToString();
 
-                        logBox.Text += timeStamp + ": " + message + "\r\n";
+                        logBox.AppendText(timeStamp + ": " + message + "\r\n");
                     });
                 }
             }
