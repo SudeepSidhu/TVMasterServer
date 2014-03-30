@@ -36,7 +36,10 @@
             this.txtDebug = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnClearServerLog = new System.Windows.Forms.Button();
+            this.btnClearInfoLog = new System.Windows.Forms.Button();
+            this.txtServerInfoLog = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnClearGeneralLog = new System.Windows.Forms.Button();
             this.btnClearDebugLog = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -79,67 +82,104 @@
             // 
             // txtServerLog
             // 
-            this.txtServerLog.Location = new System.Drawing.Point(186, 25);
+            this.txtServerLog.Location = new System.Drawing.Point(186, 160);
             this.txtServerLog.Multiline = true;
             this.txtServerLog.Name = "txtServerLog";
             this.txtServerLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtServerLog.Size = new System.Drawing.Size(569, 111);
+            this.txtServerLog.Size = new System.Drawing.Size(783, 171);
             this.txtServerLog.TabIndex = 4;
             // 
             // txtDebug
             // 
-            this.txtDebug.Location = new System.Drawing.Point(186, 155);
+            this.txtDebug.Location = new System.Drawing.Point(526, 25);
             this.txtDebug.Multiline = true;
             this.txtDebug.Name = "txtDebug";
             this.txtDebug.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtDebug.Size = new System.Drawing.Size(569, 147);
+            this.txtDebug.Size = new System.Drawing.Size(443, 111);
             this.txtDebug.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(183, 9);
+            this.label2.Location = new System.Drawing.Point(186, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 13);
+            this.label2.Size = new System.Drawing.Size(75, 13);
             this.label2.TabIndex = 6;
-            this.label2.Text = "Master Server log";
+            this.label2.Text = "Server info log";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(183, 139);
+            this.label3.Location = new System.Drawing.Point(523, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 13);
             this.label3.TabIndex = 7;
             this.label3.Text = "Debug log";
             // 
-            // btnClearServerLog
+            // btnClearInfoLog
             // 
-            this.btnClearServerLog.Location = new System.Drawing.Point(362, 308);
-            this.btnClearServerLog.Name = "btnClearServerLog";
-            this.btnClearServerLog.Size = new System.Drawing.Size(103, 23);
-            this.btnClearServerLog.TabIndex = 8;
-            this.btnClearServerLog.Text = "Clear Server log";
-            this.btnClearServerLog.UseVisualStyleBackColor = true;
-            this.btnClearServerLog.Click += new System.EventHandler(this.btnClearServerLog_Click);
+            this.btnClearInfoLog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClearInfoLog.Location = new System.Drawing.Point(472, 2);
+            this.btnClearInfoLog.Margin = new System.Windows.Forms.Padding(0);
+            this.btnClearInfoLog.Name = "btnClearInfoLog";
+            this.btnClearInfoLog.Size = new System.Drawing.Size(48, 22);
+            this.btnClearInfoLog.TabIndex = 8;
+            this.btnClearInfoLog.Text = "Clear";
+            this.btnClearInfoLog.UseVisualStyleBackColor = true;
+            this.btnClearInfoLog.Click += new System.EventHandler(this.btnClearInfoLog_Click);
+            // 
+            // txtServerInfoLog
+            // 
+            this.txtServerInfoLog.Location = new System.Drawing.Point(186, 25);
+            this.txtServerInfoLog.Multiline = true;
+            this.txtServerInfoLog.Name = "txtServerInfoLog";
+            this.txtServerInfoLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtServerInfoLog.Size = new System.Drawing.Size(334, 111);
+            this.txtServerInfoLog.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(186, 144);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(93, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "General server log";
+            // 
+            // btnClearGeneralLog
+            // 
+            this.btnClearGeneralLog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClearGeneralLog.Location = new System.Drawing.Point(921, 137);
+            this.btnClearGeneralLog.Margin = new System.Windows.Forms.Padding(0);
+            this.btnClearGeneralLog.Name = "btnClearGeneralLog";
+            this.btnClearGeneralLog.Size = new System.Drawing.Size(48, 22);
+            this.btnClearGeneralLog.TabIndex = 12;
+            this.btnClearGeneralLog.Text = "Clear";
+            this.btnClearGeneralLog.UseVisualStyleBackColor = true;
+            this.btnClearGeneralLog.Click += new System.EventHandler(this.btnClearGeneralLog_Click);
             // 
             // btnClearDebugLog
             // 
-            this.btnClearDebugLog.Location = new System.Drawing.Point(471, 308);
+            this.btnClearDebugLog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClearDebugLog.Location = new System.Drawing.Point(921, 2);
+            this.btnClearDebugLog.Margin = new System.Windows.Forms.Padding(0);
             this.btnClearDebugLog.Name = "btnClearDebugLog";
-            this.btnClearDebugLog.Size = new System.Drawing.Size(103, 23);
-            this.btnClearDebugLog.TabIndex = 9;
-            this.btnClearDebugLog.Text = "Clear Debug log";
+            this.btnClearDebugLog.Size = new System.Drawing.Size(48, 22);
+            this.btnClearDebugLog.TabIndex = 13;
+            this.btnClearDebugLog.Text = "Clear";
             this.btnClearDebugLog.UseVisualStyleBackColor = true;
-            this.btnClearDebugLog.Click += new System.EventHandler(this.btnClearDebugLog_Click);
+            this.btnClearDebugLog.Click += new System.EventHandler(this.btnClearDebugLog_Click_1);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(761, 336);
+            this.ClientSize = new System.Drawing.Size(981, 336);
             this.Controls.Add(this.btnClearDebugLog);
-            this.Controls.Add(this.btnClearServerLog);
+            this.Controls.Add(this.btnClearGeneralLog);
+            this.Controls.Add(this.btnClearInfoLog);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtServerInfoLog);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtDebug);
@@ -167,7 +207,10 @@
         private System.Windows.Forms.TextBox txtDebug;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnClearServerLog;
+        private System.Windows.Forms.Button btnClearInfoLog;
+        private System.Windows.Forms.TextBox txtServerInfoLog;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnClearGeneralLog;
         private System.Windows.Forms.Button btnClearDebugLog;
     }
 }

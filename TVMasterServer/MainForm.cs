@@ -48,19 +48,12 @@ namespace TVMasterServer
             tcpThread.Start();
         }
 
-        private void log(String message, bool debugLog)
+        private void log(String message, TextBox logBox)
         {
             try
             {
                 lock (logObj)
                 {
-                    TextBox logBox = txtServerLog;
-
-                    if (debugLog)
-                    {
-                        logBox = txtDebug;
-                    }
-
                     logBox.Invoke((MethodInvoker)delegate
                     {
                         String timeStamp = DateTime.Now.ToShortDateString().ToString() + " " + DateTime.Now.ToLongTimeString().ToString();
@@ -71,7 +64,7 @@ namespace TVMasterServer
             }
             catch (Exception e)
             {
-                log("In log():" + e.ToString(), true);
+                log("In log():" + e.ToString(), logBox);
             }
         }
 
@@ -101,7 +94,7 @@ namespace TVMasterServer
             }
             catch (Exception e)
             {
-                log("In clean():" + e.ToString(), true);
+                log("In clean():" + e.ToString(), txtDebug);
             }
         }
 
@@ -120,7 +113,7 @@ namespace TVMasterServer
                 }
             }
             catch (Exception e){
-                log("In getServers():" + e.ToString(), true);
+                log("In getServers():" + e.ToString(), txtDebug);
             }
 
             return strServers;
@@ -151,7 +144,7 @@ namespace TVMasterServer
                 }
             }
             catch (Exception e){
-                log("In refreshList():" + e.ToString(), true);
+                log("In refreshList():" + e.ToString(), txtDebug);
             }
         }
 
@@ -166,7 +159,7 @@ namespace TVMasterServer
 
                     if (newServer.Length > 0 && !strServers.Contains(newServer))
                     {
-                        log("'" + newServer + "' added", false);
+                        log("'" + newServer + "' added", txtServerInfoLog);
 
                         strServers += newServer + "|";
                         Properties.Settings.Default.Servers = strServers;
@@ -179,7 +172,7 @@ namespace TVMasterServer
             }
             catch (Exception e)
             {
-                log("In addServer():" + e.ToString(), true);
+                log("In addServer():" + e.ToString(), txtDebug);
             }
         }
 
@@ -194,7 +187,7 @@ namespace TVMasterServer
                     strServers = strServers.Replace(server.Trim(), "");
                     Properties.Settings.Default.Servers = strServers;
                     Properties.Settings.Default.Save();
-                    log("'" + server.Trim() + "' removed", false);
+                    log("'" + server.Trim() + "' removed", txtServerInfoLog);
                 }
 
                 clean();
@@ -202,7 +195,7 @@ namespace TVMasterServer
             }
             catch (Exception e)
             {
-                log("In removeServer():" + e.ToString(), true);
+                log("In removeServer():" + e.ToString(), txtDebug);
             }
         }
 
@@ -218,12 +211,12 @@ namespace TVMasterServer
                     if (receiveBytesUDP != null)
                     {
                         String addr = tvServer.Address.ToString();
-                        log("'" + addr + "' just came online", false);
+                        log("'" + addr + "' just came online", txtServerInfoLog);
                         addServer(addr);
                     }
                 }
                 catch (Exception e){
-                    log("In startUDPServer():" + e.ToString(), true);
+                    log("In startUDPServer():" + e.ToString(), txtDebug);
                 }
 
             }
@@ -249,18 +242,18 @@ namespace TVMasterServer
                     if (message.StartsWith("serversPlz"))
                     {
 
-                        log("'" + client.RemoteEndPoint.ToString() + "' is asking for servers", false);
+                        log("'" + client.RemoteEndPoint.ToString() + "' is asking for servers", txtServerLog);
 
                         String servers = getServers();
                         client.Send(asen.GetBytes(servers));
 
-                        log("Sent '" + servers + "' to '" + client.RemoteEndPoint.ToString() + "'", true);
+                        log("Sent '" + servers + "' to '" + client.RemoteEndPoint.ToString() + "'", txtServerLog);
                     }
 
                     client.Close();
                 }
                 catch (Exception e){
-                    log("In startTCPServer():" + e.ToString(), true);                
+                    log("In startTCPServer():" + e.ToString(), txtDebug);                
                 }
             }
         }
@@ -310,7 +303,15 @@ namespace TVMasterServer
             }
         }
 
-        private void btnClearServerLog_Click(object sender, EventArgs e)
+        private void btnClearDebugLog_Click_1(object sender, EventArgs e)
+        {
+            lock (logObj)
+            {
+                txtDebug.Clear();
+            }
+        }
+
+        private void btnClearGeneralLog_Click(object sender, EventArgs e)
         {
             lock (logObj)
             {
@@ -318,11 +319,11 @@ namespace TVMasterServer
             }
         }
 
-        private void btnClearDebugLog_Click(object sender, EventArgs e)
+        private void btnClearInfoLog_Click(object sender, EventArgs e)
         {
             lock (logObj)
             {
-                txtDebug.Clear();
+                txtServerInfoLog.Clear();
             }
         }
     }
